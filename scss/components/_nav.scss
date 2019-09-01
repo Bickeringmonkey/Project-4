@@ -1,0 +1,30 @@
+// ================================
+//        NAVIGATION STYLES
+// ================================
+
+.nav {
+    padding-left: 0;
+    flex-basis: 100%;
+    @include flexbox($dir: column);
+    @include mq($tablet) {
+      @include flexbox($dir: row, $just: flex-end);
+      align-items: center;
+    }
+    &-link{
+      text-align: center;
+      border-radius: 5px;
+      padding: 10px 0;
+      display: block;
+      width: 100%;
+      transition:
+      background-color .2s ease-in-out,
+      color .2s ease-in-out;
+      @include mq($tablet) {
+        flex-basis: 100px;
+      }
+    }
+  }
+  .nav-link:hover {
+    color: $white;
+    background-color: $primary-color;
+  }

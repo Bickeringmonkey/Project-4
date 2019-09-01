@@ -1,0 +1,39 @@
+// =================================
+//         BUTTON STYLES
+// =================================
+
+.btn {
+  margin-top: 15px;
+  width: 100%;
+  color: $white;
+  border: none;
+  padding: 10px 0;
+  text-transform: uppercase;
+  border-radius: 5px;
+  @each $key, $color in $button-colors {
+      &.#{$key} {
+          background-color: $color;
+          transition-delay: 0.5s;
+          transition: 0.3s;
+      }
+  }
+  &:hover{
+  @each $key, $color in $button-colors {
+    &.#{$key} {
+        background-color: lighten($color, 15%);
+    }
+  }
+}
+    @include mq($tablet) {
+      padding: 10px 30px;
+    }
+  
+  }
+  
+  .btn + .btn {
+    @include mq($tablet) {
+      margin-left: 10px;
+    }
+  }
+  
+  

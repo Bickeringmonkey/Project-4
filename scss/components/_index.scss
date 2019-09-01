@@ -1,9 +1,10 @@
-// **************************************
-// components/_index.scss
-// used to import individual components
-// **************************************
+// =======================
+//   COMPONENTS IMPORTS
+// =======================
 
-// import the grid component
-@import 'grid';
-
-// NOTE: import other components here:
+@import 'nav.scss',
+        'extend',
+        'grid.scss',
+        'form.scss',
+        'button',
+        'images';

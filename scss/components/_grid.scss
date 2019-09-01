@@ -1,68 +1,134 @@
-// **********************************************
-// _grid.scss
-// styles related to the grid system and
-// main container.
-// major grid styles have been added here for you
-// but additional styling may be needed
-// **********************************************
+// ================================
+//         GRID STYLES
+// ================================
 
-
-// grid base class
-.grid {
-
-  // .grid__row
-  &__row {
+.container {
+    padding: 0 10px;
+    @include mq($tablet) {
+      max-width: 1400px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  .row {
+    @include flexbox($dir: column);
     padding: 1em 10px;
-    display: flex;
-    flex-direction: column;
-
-    // NOTE: replace with media query mixin if aiming for exceeds
-    @media (min-width: 768px) {
-      flex-direction: row;
+    @include mq($tablet) {
+      @include flexbox($dir: row);
     }
   }
-
-  // .grid__col
-  &__col {
-
-    // create grid columns dynamically
-    // loop through each column size
-    @for $i from 1 through 12 {
-
-      // concatenate CSS selector, ie when $i = 1,
-      // selector would be .grid__col--1
-      &--#{$i} {
-
-        // base styles applied to all grid columns 
-        // NOTE: could be converted to a placeholder, along with margin
-        // from the  media query
-        margin-top: 10px;
-        flex-basis: 100%;
-
-        // NOTE: replace with media query mixin if aiming for exceeds
-        @media (min-width: 768px) {
-
-          // base stlyes applied to all grid columns
-          margin-top: 0;
-
-          // make column width a percentage of the column number / total columns
-          flex-basis: #{$i / 12 * 100 + "%"} ;
-        }
-      }
+  
+  [class^=col] {
+    margin-top: 10px;
+    flex-basis: 100%;
+    min-height: 25px;
+    padding: 10px;
+    border-radius: 5px;
+    @include mq($tablet) {
+      @include flexbox($just: center);
+      margin-top: 0;
+      align-items: center;
     }
   }
-}
-
-// targets all elements with classes that begin with grid__col
-[class^=grid__col] {
-  // grid__col + grid__col, targets two sibling columns
-  & + & {
-
-    // NOTE: replace with media query mixin if aiming for exceeds
-    @media (min-width: 768px) {
-
-      // add grid gutter
+  
+  [class^=col] + [class^=col] {
+    @include mq($tablet) {
       margin-left: 10px;
     }
   }
-}
+
+  .theme.col {
+    @for $i from 1 through 12 {
+      &-#{$i}.theme {
+        background-color: nth($colors, $i);
+      }
+    }
+  }
+  
+  
+  .col-1 {
+    @include mq($tablet) {
+    flex-basis: 8.33%;
+    }
+  }
+  
+  .col-2 {
+    @include mq($tablet) {
+    flex-basis: 16.67%;
+    }
+  }
+  
+  .col-3 {
+    @include mq($tablet) {
+    flex-basis: 25.00%;
+    }
+  }
+  
+  .col-4 {
+    @include mq($tablet) {
+    flex-basis: 33.33%;
+    }
+  }
+  
+  .col-5 {
+    @include mq($tablet) {
+    flex-basis: 41.67%;
+    }
+  }
+  
+  .col-6 {
+    @include mq($tablet) {
+    flex-basis: 50.00%;
+    }
+  }
+  
+  .col-7 {
+    @include mq($tablet) {
+    flex-basis: 58.33%;
+    }
+  }
+  
+  .col-8 {
+    @include mq($tablet) {
+    flex-basis: 66.67%;
+    }
+  }
+  
+  .col-9 {
+    @include mq($tablet) {
+    flex-basis: 75.00%
+    }
+  }
+  
+  .col-10 {
+    @include mq($tablet) {
+    flex-basis: 83.33%;
+    }
+  }
+  
+  .col-11 {
+    @include mq($tablet) {
+    flex-basis: 91.67%;
+    }
+  }
+  
+  .col-12 {
+    @include mq($tablet) {
+    flex-basis: 100%;
+    }
+  }
+  
+  .card {
+    flex-basis: 100%;
+  }
+  
+  .centered {
+    @include mq($tablet) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    }
+  }
